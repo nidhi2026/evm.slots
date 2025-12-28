@@ -29,5 +29,10 @@
   },
   "engines": {
     "node": ">=20.18.3"
+  },
+  "dependencies": {
+    "@web3icons/react": "^4.1.8",
+    "react-select": "^5.10.2",
+    "vercel": "latest"
   }
 }
