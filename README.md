@@ -1,56 +1,46 @@
-# 🏗 Scaffold-ETH 2
+# EVM.SLOTS  
+*A Smart Contract Storage Explorer for EVM Chains*
 
-<h4 align="center">
-  <a href="https://docs.scaffoldeth.io">Documentation</a> |
-  <a href="https://scaffoldeth.io">Website</a>
-</h4>
+Built with 🏗 **Scaffold-ETH 2**
 
-🧪 An open-source, up-to-date toolkit for building decentralized applications (dapps) on the Ethereum blockchain. It's designed to make it easier for developers to create and deploy smart contracts and build user interfaces that interact with those contracts.
+Inspect contract storage across multiple EVM chains and fetch on-chain values from RPC.
+Whether a contract is **verified or unverified**, EVM.SLOTS lets you read raw storage slots directly from the RPC and understand a contract’s true internal state.
 
-⚙️ Built using NextJS, RainbowKit, Wagmi, Viem, and Typescript.
+## ❓ Why a Storage Slot Explorer?
 
-- 🪝 **[Custom hooks](https://docs.scaffoldeth.io/hooks/)**: Collection of React hooks wrapper around [wagmi](https://wagmi.sh/) to simplify interactions with smart contracts with typescript autocompletion.
-- 🧱 [**Components**](https://docs.scaffoldeth.io/components/): Collection of common web3 components to quickly build your frontend.
-- 🔥 **Burner Wallet & Local Faucet**: Quickly test your application with a burner wallet and local faucet.
-- 🔐 **Integration with Wallet Providers**: Connect to different wallet providers and interact with the Ethereum network.
+Not everything is accessible via contract methods (Private & internal variables, Mappings and dynamic arrays, Proxy contract storage,...). These values still exist on-chain — they’re just hidden behind storage slots.
 
-![Debug Contracts tab](https://github.com/scaffold-eth/scaffold-eth-2/assets/55535804/b237af0c-5027-4849-a5c1-2e31495cccb1)
+**EVM.SLOTS bridges that gap** by making low-level EVM storage readable and explorable.
 
-## Requirements
+## ✨ Features
 
-Before you begin, you need to install the following tools:
+- 🔎 **Raw Storage Slot Explorer**
+  - Read any slot using `eth_getStorageAt`
+  - Works for **verified & unverified contracts**
 
-- [Node (>= v20.18.3)](https://nodejs.org/en/download/)
-- Yarn ([v1](https://classic.yarnpkg.com/en/docs/install/) or [v2+](https://yarnpkg.com/getting-started/install))
-- [Git](https://git-scm.com/downloads)
+- 🧠 **Decoded Storage Layout (Verified Contracts)**
+  - Fetches metadata from **Sourcify**
+  - Displays variable names, types, offsets, and slot indices
 
-## Quickstart
+- 🗺️ **Mapping & Dynamic Array Explorers**
+  - Compute storage slots for mappings and arrays
+  - Indexed exploration of complex data structures
 
-To get started with Scaffold-ETH 2, follow the steps below:
+- 🧩 **Proxy-Aware**
+  - Supports most common proxy patterns
+  - Resolves implementation storage
+  - Diamond proxy support in progress
 
-1. Install dependencies if it was skipped in CLI:
+- 🌐 **Multi-Chain Support**
+  - Explore contracts across multiple EVM networks
+  - Custom networks supported
 
-```
-cd my-dapp-example
-yarn install
-```
-2. Start your NextJS app:
+## 🛠 Tech Stack
 
-```
-yarn start
-```
+- **Next.js**
+- **TypeScript**
+- **Viem** – EVM RPC interactions
+- **Sourcify API** – Verified contract metadata
+- **Scaffold-ETH 2** – Project scaffolding & UI components
 
-Visit your app on: `http://localhost:3000`. You can interact with your smart contract using the `Debug Contracts` page. You can tweak the app config in `packages/nextjs/scaffold.config.ts`.
-
-
-## Documentation
-
-Visit our [docs](https://docs.scaffoldeth.io) to learn how to start building with Scaffold-ETH 2.
-
-To know more about its features, check out our [website](https://scaffoldeth.io).
-
-## Contributing to Scaffold-ETH 2
-
-We welcome contributions to Scaffold-ETH 2!
-
-Please see [CONTRIBUTING.MD](https://github.com/scaffold-eth/scaffold-eth-2/blob/main/CONTRIBUTING.md) for more information and guidelines for contributing to Scaffold-ETH 2.
+> No wallet connection required for exploration :)
