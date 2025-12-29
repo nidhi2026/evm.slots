@@ -134,14 +134,26 @@ const Home: NextPage = () => {
                 disabled={loading || !contractAddress}
                 className="btn btn-secondary min-h-fit h-10 px-4 text-base border-2"
               >
-                {loading ? "Fetching..." : "Fetch Storage"}
+                {loading ? (
+                  <>
+                    Fetching <div className="loading loading-spinner loading-xs mr-2"></div>
+                  </>
+                ) : (
+                  "Fetch Storage"
+                )}
               </button>
               <button
                 onClick={handleNavigate}
                 disabled={loading || !showStorage || isPending}
                 className={`btn ${isContractVerified ? "btn-success" : "btn-warning"} min-h-fit h-10 px-4 text-base border-2`}
               >
-                {isPending ? "Loading..." : <>View {showStorage && !isContractVerified ? "Raw" : ""} Storage</>}
+                {isPending ? (
+                  <>
+                    Loading <div className="loading loading-spinner loading-xs mr-2"></div>
+                  </>
+                ) : (
+                  <>View {showStorage && !isContractVerified ? "Raw" : ""} Storage</>
+                )}
               </button>
             </div>
             {inlineMessage && (
