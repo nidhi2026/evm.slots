@@ -7,8 +7,6 @@ export function getPublicClient(chainId: number) {
 
   return createPublicClient({
     chain,
-    transport: fallback([
-      http("https://ethereum.publicnode.com"), // default public RPC
-    ]),
+    transport: fallback([...chain.rpcUrls.default.http.map(url => http(url)), http("https://ethereum.publicnode.com")]),
   });
 }

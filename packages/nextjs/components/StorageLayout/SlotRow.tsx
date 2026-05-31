@@ -60,10 +60,17 @@ export default function StorageSlotRow({
       const slotIndex = parseInt(item.slot);
       const slotHex = toHex(slotIndex);
 
-      const storageValue = await publicClient.getStorageAt({
-        address: contractAddress,
-        slot: slotHex as `0x${string}`,
+      // const storageValue = await publicClient.getStorageAt({
+      //   address: contractAddress,
+      //   slot: slotHex as `0x${string}`,
+      // });
+
+      const response = await fetch("/api/storage", {
+        method: "POST",
+        body: JSON.stringify({ address: contractAddress, slot: slotHex as `0x${string}`, chainId }),
       });
+      const { storageValue } = await response.json();
+      console.log("Fetched storage value from API:", storageValue);
 
       setValue(storageValue || "0x0");
       return storageValue || "0x0";
